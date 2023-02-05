@@ -1,16 +1,25 @@
-import logo from "./logo.svg";
-import "./App.css";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './screens/Home';
+import Playground from './screens/Playground';
+import Error404 from './screens/Error404';
+import { GlobalStyle } from './style/global';
+import ModalProvider from './context/ModalContext';
+import PlaygroundProvider from './context/PlaygroundContext';
 
 function App() {
   return (
-    <div className="App">
-      <a
-        href="https://images.ctfassets.net/hrltx12pl8hq/5596z2BCR9KmT1KeRBrOQa/4070fd4e2f1a13f71c2c46afeb18e41c/shutterstock_451077043-hero1.jpg"
-        download
-      >
-        download
-      </a>
-    </div>
+    <PlaygroundProvider>
+      <ModalProvider>
+        <BrowserRouter>
+          <GlobalStyle />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/playground/:folderId/:playgroundId" element={<Playground />} />
+            <Route path="*" element={<Error404 />} />
+          </Routes>
+        </BrowserRouter>
+      </ModalProvider>
+    </PlaygroundProvider>
   );
 }
 
