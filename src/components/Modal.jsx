@@ -1,6 +1,6 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { NewFolder, NewPlayground, NewPlaygroundAndFolder, EditFolder, EditPlaygroundTitle } from './ModalTypes'
+import { NewFolder, NewPlayground, NewPlaygroundAndFolder, EditFolder, EditPlaygroundTitle, Loading } from './ModalTypes'
 import { ModalContext } from '../context/ModalContext'
 
 const ModalContainer = styled.div`
@@ -22,12 +22,19 @@ const ModalContent = styled.div`
     padding: 2rem;
     width: 35%;
     border-radius: 10px;
+    `
+const ModalContentLoading = styled.div`
+    margin: -2rem;
+    background-color: #000;
+    border-radius: 15px;
+    
 `
 
 export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
 `
 export const CloseButton = styled.button`
   background: transparent;
@@ -44,6 +51,7 @@ export const Input = styled.div`
   padding: 1.5rem 0;
   gap: 2rem;
   padding-bottom: 0;
+  margin-bottom: 1.5rem;
 
   input {
     flex-grow: 1;
@@ -75,6 +83,7 @@ const Modal = () => {
         {modalType === 3 && <NewPlaygroundAndFolder />}
         {modalType === 4 && <EditFolder />}
         {modalType === 5 && <EditPlaygroundTitle />}
+        {modalType === 6 && <ModalContentLoading><Loading /></ModalContentLoading>}
       </ModalContent>
     </ModalContainer>
   )

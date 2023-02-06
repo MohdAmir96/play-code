@@ -11,7 +11,7 @@ const InputWithSelect = styled.div`
   gap: 1rem;
   margin-top: 1.2rem;
   align-items: center;
-
+  margin-bottom: 1.5rem;
   input {
     flex-grow: 1;
     height: 2rem;
@@ -30,10 +30,10 @@ const NewPlayground = () => {
   const { addPlayground } = useContext(PlaygroundContext);
 
   const languageOptions = [
-    { value: "c++", label: "C++" },
-    { value: "java", label: "Java" },
-    { value: "javascript", label: "JavaScript" },
-    { value: "python", label: "Python" },
+    { value: "cpp", label: "cpp" },
+    { value: "java", label: "java" },
+    { value: "javascript", label: "javascript" },
+    { value: "python", label: "python" },
   ];
 
   const {folderId} = isOpenModal.identifiers;
@@ -55,6 +55,7 @@ const NewPlayground = () => {
       <InputWithSelect>
         <input
           type='text'
+          style={{borderRadius: '5px', padding: '0px 10px'}}
           onChange={(e) => setCardTitle(e.target.value)}
         />
         <Select
@@ -65,7 +66,8 @@ const NewPlayground = () => {
         <button onClick={() => {
           addPlayground(folderId, cardTitle, language.label)
           closeModal();
-        }}> Create Playground </button>
+        }} style={{borderRadius: '5px', cursor: 'pointer', border: 'none', backgroundColor: '#4158D0', backgroundImage: 'linear-gradient(43deg, rgb(65, 88, 208) 0%, rgb(175 106 170) 50%, rgb(200 80 192) 100%)',
+        color: '#fff'}}> Create Playground </button>
       </InputWithSelect>
     </>
   )
